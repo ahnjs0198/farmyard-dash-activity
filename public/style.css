@@ -1,0 +1,40 @@
+/* Layout: game strip on top, leaderboard card below; one grey ink on a pale ground like the offline runner */
+@font-face{font-family:"Press Start 2P";src:url("fonts/press-start-2p.woff2") format("woff2");font-display:swap}
+:root{
+  --page:#ffffff; --stage:#f7f7f7; --ink:#535353; --far:#d4d4d4; --dim:#8e8e8e; --line:#e3e3e3;
+  --pixel:"Press Start 2P", ui-monospace, monospace;
+  --body:system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --page:#202124; --stage:#202124; --ink:#acacac; --far:#46474b; --dim:#808186; --line:#35363a; color-scheme:dark}}
+:root[data-theme="dark"]{--page:#202124; --stage:#202124; --ink:#acacac; --far:#46474b; --dim:#808186; --line:#35363a; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--page);color:var(--ink);font:14px/1.5 var(--body);
+  padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;justify-content:center;align-items:center;
+  user-select:none;-webkit-user-select:none;touch-action:manipulation}
+.wrap{width:100%;max-width:760px;display:flex;flex-direction:column;gap:12px;padding-block:16px}
+canvas{width:100%;aspect-ratio:3/1;display:block;cursor:pointer;outline:none;image-rendering:pixelated;background:var(--stage);transition:filter .5s steps(4)}
+canvas.night{filter:invert(1)}
+canvas:focus-visible{box-shadow:0 0 0 2px var(--dim)}
+.hint{margin:0;font-size:13px;color:var(--dim);text-align:center}
+.hint kbd{font-family:var(--pixel);font-size:9px;border:1px solid var(--dim);border-radius:3px;padding:2px 5px}
+.board{border:2px solid var(--ink);padding:14px 16px;display:flex;flex-direction:column;gap:10px;max-width:420px;width:100%;align-self:center}
+.board header{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.board h2{margin:0;font:400 11px var(--pixel);letter-spacing:.08em}
+#scope{font:400 8px var(--pixel);color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;max-height:40vh;overflow:auto}
+li{display:grid;grid-template-columns:3ch 1fr auto;gap:12px;align-items:baseline;padding:6px 0;border-bottom:1px dashed var(--line);font-variant-numeric:tabular-nums}
+li:last-child{border-bottom:0}
+li .rank,li .best{font:400 10px var(--pixel)}
+li .rank{color:var(--dim)}
+li .name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+li.me{font-weight:700}
+li.me .rank{color:var(--ink)}
+li.me .name::after{content:" (you)";font-weight:400;color:var(--dim)}
+.empty{margin:0;color:var(--dim);font-size:13px}
+.status{margin:0;font-size:12px;color:var(--dim);border-top:1px solid var(--line);padding-top:8px}
+@media (prefers-reduced-motion: reduce){canvas{transition:none}}

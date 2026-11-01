@@ -1,0 +1,20 @@
+{
+  // Farmyard Dash as a Discord Activity: static game in ./public, API in src/worker.js, scores in D1
+  "name": "farmyard-dash",
+  "main": "src/worker.js",
+  "compatibility_date": "2025-09-01",
+  "assets": { "directory": "./public", "binding": "ASSETS" },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "farmyard-dash",
+      // `npx wrangler d1 create farmyard-dash` prints this id
+      "database_id": "PUT-YOUR-D1-DATABASE-ID-HERE"
+    }
+  ],
+  "vars": {
+    // Developer Portal > OAuth2 > Client ID (public value)
+    "DISCORD_CLIENT_ID": "PUT-YOUR-CLIENT-ID-HERE"
+  }
+  // The client secret is NOT stored here: `npx wrangler secret put DISCORD_CLIENT_SECRET`
+}

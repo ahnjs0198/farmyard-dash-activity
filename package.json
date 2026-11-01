@@ -1,0 +1,22 @@
+{
+  "name": "farmyard-activity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "esbuild src/app.js --bundle --format=iife --minify --target=es2020 --outfile=public/app.js",
+    "dev": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy",
+    "db:init": "wrangler d1 execute farmyard-dash --remote --file=schema.sql"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@discord/embedded-app-sdk": "^2.5.0",
+    "@fontsource/press-start-2p": "^5.3.0",
+    "esbuild": "^0.28.2",
+    "wrangler": "^4.156.0"
+  }
+}

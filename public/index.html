@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Farmyard Dash</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <canvas id="c" width="900" height="300" tabindex="0" aria-label="Game screen. Tap or press Space to jump over sheep, hens and hay bales. Stay on the ground when a goose flies over"></canvas>
+  <p class="hint">Tap or press <kbd>SPACE</kbd> <kbd>↑</kbd> to jump · Hold to jump higher · Don't jump into geese</p>
+  <section class="board" aria-labelledby="board-title">
+    <header><h2 id="board-title">LEADERBOARD</h2><span id="scope">…</span></header>
+    <ol id="board"></ol>
+    <p id="empty" class="empty">No scores yet. Finish a run to post the first one.</p>
+    <p id="status" class="status" role="status">Loading…</p>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
